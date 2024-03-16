@@ -1,7 +1,14 @@
 return {
 	"neovim/nvim-lspconfig",
+	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
+    "folke/neodev.nvim"
+	},
 	config = function()
-		require("lspconfig").lua_ls.setup({})
+		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+		require("lspconfig").lua_ls.setup({
+			capablities = lsp_capabilities
+		})
 
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
