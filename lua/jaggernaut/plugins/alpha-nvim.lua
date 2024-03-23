@@ -33,11 +33,10 @@ return {
     }
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button( "e", "  : New file" , ""),
-      dashboard.button( "f", "󰛔  : Find file", ""),
-      dashboard.button( "r", "  : Recent"   , ""),
-      dashboard.button( "s", "  : Settings" , ""),
-      dashboard.button( "q", "󰰲  : Quit Jaggernaut", ""),
+      dashboard.button( "e", "  : New file" , ":ene | startinsert <CR>"),
+      dashboard.button( "f", "󰛔  : Find file", ":Telescope find_files <CR>"),
+      dashboard.button( "s", "  : Settings" , ":cd $HOME/.config/nvim | Telescope find_files <CR>"),
+      dashboard.button( "q", "󰰲  : Quit Jaggernaut", ":q <CR>"),
   }
   alpha.setup(dashboard.opts)
    -- Disable folding on alpha buffer
