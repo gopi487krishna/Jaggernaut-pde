@@ -12,6 +12,26 @@ return {
 			log_level = vim.log.levels.WARN,
 			-- All formatter configurations are opt-in
 			filetype = {
+				-- For rust
+				rust = {
+					function()
+						return {
+							exe = "rustfmt",
+							args = { "--emit=stdout" },
+							stdin = true,
+						}
+					end,
+				},
+				-- C++ and C formatter
+				cpp = {
+					function()
+						return {
+							exe = "clang-format",
+							args = { "--assume-filename", vim.api.nvim_buf_get_name(0) },
+							stdin = true,
+						}
+					end,
+				},
 				-- Formatter configurations for filetype "lua" go here
 				-- and will be executed in order
 				lua = {
@@ -51,5 +71,7 @@ return {
 				},
 			},
 		})
+    -- keymaps
+		vim.api.nvim_set_keymap("n", "<leader>fr", ":Format<CR>", { noremap = true, silent = true })
 	end,
 }

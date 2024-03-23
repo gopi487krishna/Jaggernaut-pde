@@ -2,13 +2,30 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-    "folke/neodev.nvim"
+		"folke/neodev.nvim",
 	},
 	config = function()
-		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-		require("lspconfig").lua_ls.setup({
-			capablities = lsp_capabilities
+		local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local lsp_config = require("lspconfig")
+
+		-- Lua language
+		lsp_config.lua_ls.setup({
+			capablities = lsp_capabilities,
 		})
+
+    -- Rust
+  lsp_config.rust_analyzer.setup{
+      settings = {
+        ['rust_analyzer'] = {
+          diagnostics = {
+            enable = false
+          }
+        }
+      }
+  }
+
+		-- Clangd
+		lsp_config.clangd.setup({})
 
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
