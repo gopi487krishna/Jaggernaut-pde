@@ -40,3 +40,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+
+-- Status line
+vim.o.laststatus = 3
+vim.o.cmdheight  = 0
