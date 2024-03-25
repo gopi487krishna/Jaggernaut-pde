@@ -23,7 +23,7 @@ return {
     dap.adapters.cppdbg = {
       id = 'cppdbg',
       type = 'executable',
-      command = '/root/.local/share/nvim/mason/bin/OpenDebugAD7',
+      command = vim.fn.stdpath('data')..'/mason/bin/OpenDebugAD7',
     }
 
 		require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp", "rust" } })
