@@ -20,10 +20,6 @@ return {
 			":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>"
 		)
 		-- Setup dap
-		mason_nvim_dap.setup({
-			ensure_installed = { "cppdbg", "python" },
-		})
-
     dap.adapters.cppdbg = {
       id = 'cppdbg',
       type = 'executable',
