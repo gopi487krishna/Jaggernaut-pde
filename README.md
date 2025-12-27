@@ -12,9 +12,6 @@ My Personal Neovim config intended for Lua, C/C++ and Rust development.
 ## Terminal
 ![](Screenshots/terminal.png)
 
-## Timer
-![](Screenshots/timer.png)
-
 ## Find Files
 ![](Screenshots/find_files.png)
 
