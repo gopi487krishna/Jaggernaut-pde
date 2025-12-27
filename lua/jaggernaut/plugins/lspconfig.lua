@@ -7,16 +7,16 @@ return {
 	},
 	config = function()
 		local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-		local lsp_config = require("lspconfig")
     local wk = require("which-key.extras");
 
 		-- Lua language
-		lsp_config.lua_ls.setup({
-			capablities = lsp_capabilities,
-		})
-
+    vim.lsp.config("lua_ls", {
+      capablities = lsp_capabilities,
+    })
+    vim.lsp.enable({"lua_ls"});
+    
     -- Rust
-  lsp_config.rust_analyzer.setup{
+    vim.lsp.config("rust_analyzer", {
       settings = {
         ['rust_analyzer'] = {
           diagnostics = {
@@ -24,10 +24,11 @@ return {
           }
         }
       }
-  }
+    });
+    vim.lsp.enable({"rust_analyzer"});
 
 		-- Clangd
-    lsp_config.clangd.setup({})
+    vim.lsp.enable({"clangd"});
 
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, {desc = "Open float"})
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {desc = "Go to Prev"})

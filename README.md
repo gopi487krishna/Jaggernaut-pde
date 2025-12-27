@@ -9,9 +9,6 @@ My Personal Neovim config intended for Lua, C/C++ and Rust development.
 ## CodeAction
 ![](Screenshots/codeaction_preview.png)
 
-## CodeCompanion
-![](Screenshots/codecompanion.png)
-
 ## Terminal
 ![](Screenshots/terminal.png)
 
