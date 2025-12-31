@@ -32,7 +32,7 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- clipboard
---opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
@@ -45,32 +45,3 @@ opt.swapfile = false
 -- Status line
 vim.o.laststatus = 3
 vim.o.cmdheight  = 0
-
-
-vim.cmd[[
-augroup RemoveNewlines
-    autocmd!
-    autocmd TextYankPost * let @* = substitute(@*, '\n', '', 'g')
-augroup END
-]]
-
-vim.o.clipboard = "unnamedplus"
-
-local function paste()
-  return {
-    vim.fn.split(vim.fn.getreg(""), "\n"),
-    vim.fn.getregtype(""),
-  }
-end
-
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = paste,
-    ["*"] = paste,
-  },
-}
